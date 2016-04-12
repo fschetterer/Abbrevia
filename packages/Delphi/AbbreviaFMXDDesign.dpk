@@ -26,7 +26,6 @@ package AbbreviaFMXDDesign;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack Abbrevia FMX Designtime Delphi package'}
-{$LIBSUFFIX '230'}
 {$IMPLICITBUILD ON}
 
 requires

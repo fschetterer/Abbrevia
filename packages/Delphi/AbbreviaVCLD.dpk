@@ -51,7 +51,6 @@ package AbbreviaVCLD;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'TurboPack Abbrevia Runtime Delphi package VCL'}
-{$LIBSUFFIX '230'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
