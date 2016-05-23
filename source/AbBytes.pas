@@ -76,8 +76,12 @@ begin
   iLen := Length(pBytes);
   if iLen > AMaxLen then
     iLen := AMaxLen;
-  Move(pBytes[0], ADest^, iLen);
-  ADest[iLen] := 0;
+
+  if iLen > 0 then // EZ - fix range check and MEMORY OVERWRITE if len=0
+  begin
+    Move(pBytes[0], ADest^, iLen);
+    ADest[iLen] := 0;
+  end;
 end;
 
 class function TAbBytes.StrLen(ABuffer: Pointer): Cardinal;
