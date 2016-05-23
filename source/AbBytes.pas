@@ -33,7 +33,10 @@ var
   pBytes: TBytes;
 begin
   SetLength(pBytes, ALen);
-  Move(ASource^, pBytes[0], ALen);
+
+  if ALen > 0 then
+    Move(ASource^, pBytes[0], ALen);
+
   Result := TEncoding.ANSI.GetString(pBytes);
 end;
 
