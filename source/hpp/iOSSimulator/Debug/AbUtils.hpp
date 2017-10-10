@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'AbUtils.pas' rev: 30.00 (iOSSIM)
+// (DO NOT EDIT: machine generated header) 'AbUtils.pas' rev: 32.00 (iOSSIM)
 
 #ifndef AbutilsHPP
 #define AbutilsHPP
@@ -106,7 +106,6 @@ static constexpr System::Word AB_FPERMISSION_GENERIC = System::Word(0x1a4);
 extern DELPHI_PACKAGE bool __fastcall AbCopyFile(const System::UnicodeString Source, const System::UnicodeString Destination, bool FailIfExists);
 extern DELPHI_PACKAGE void __fastcall AbCreateDirectory(const System::UnicodeString Path);
 extern DELPHI_PACKAGE System::UnicodeString __fastcall AbCreateTempFile(const System::UnicodeString Dir);
-extern DELPHI_PACKAGE System::UnicodeString __fastcall AbGetTempDirectory(void);
 extern DELPHI_PACKAGE System::UnicodeString __fastcall AbGetTempFile(const System::UnicodeString Dir, bool CreateIt);
 extern DELPHI_PACKAGE System::WideChar __fastcall AbDrive(const System::UnicodeString ArchiveName);
 extern DELPHI_PACKAGE bool __fastcall AbDriveIsRemovable(const System::UnicodeString ArchiveName);

@@ -56,7 +56,7 @@ type
     protected {private}
       vmsCachePage    : PvmsPage;   {the latest page used}
       vmsLRU          : Integer;    {'tick' value}
-      vmsMaxMemToUse  : Longword;   {maximum memory to use for data}
+      vmsMaxMemToUse  : UInt32;   {maximum memory to use for data}
       vmsMaxPages     : Integer;    {maximum data pages}
       vmsPageList     : TList<PvmsPage>; {page array, sorted by offset}
       vmsPosition     : Int64;      {position of stream}
@@ -66,9 +66,9 @@ type
       vmsSwapFileSize : Int64;      {size of swap file}
       vmsSwapStream   : TFileStream;{swap file stream}
     protected
-      procedure vmsSetMaxMemToUse(aNewMem : Longword);
+      procedure vmsSetMaxMemToUse(aNewMem : UInt32);
 
-      function vmsAlterPageList(aNewMem : Longword) : Longword;
+      function vmsAlterPageList(aNewMem : UInt32) : UInt32;
       procedure vmsFindOldestPage(out OldestInx : Integer;
                                   out OldestPage: PvmsPage);
       function vmsGetNextLRU : Integer;
@@ -94,7 +94,7 @@ type
       procedure SetSize(const NewSize : Int64); override;
         {-set the stream size}
 
-      property MaxMemToUse : Longword
+      property MaxMemToUse : UInt32
          read vmsMaxMemToUse write vmsSetMaxMemToUse;
         {-maximum memory to use for data before swapping to disk}
       property SwapFileDirectory : string
@@ -144,10 +144,11 @@ begin
   {destroy the swap file}
   vmsSwapFileDestroy;
   {throw away all pages in the list}
-  if (vmsPageList <> nil) then begin
+  if (vmsPageList <> nil) then
+  begin
     for Inx := 0 to pred(vmsPageList.Count) do
-      Dispose(vmsPageList[Inx]);
-    vmsPageList.Destroy;
+      FreeMem(PvmsPage(vmsPageList[Inx]));
+    vmsPageList.Free;
   end;
   {let our ancestor clean up}
   inherited Destroy;
@@ -254,7 +255,7 @@ begin
     vmsPosition := NewSize;
 end;
 {--------}
-function TAbVirtualMemoryStream.vmsAlterPageList(aNewMem : Longword) : Longword;
+function TAbVirtualMemoryStream.vmsAlterPageList(aNewMem : UInt32) : UInt32;
 var
   NumPages : Integer;
   Page     : PvmsPage;
@@ -420,7 +421,7 @@ begin
   end;{try..except}
 end;
 {--------}
-procedure TAbVirtualMemoryStream.vmsSetMaxMemToUse(aNewMem : Longword);
+procedure TAbVirtualMemoryStream.vmsSetMaxMemToUse(aNewMem : UInt32);
 begin
   vmsMaxMemToUse := vmsAlterPageList(aNewMem);
 end;

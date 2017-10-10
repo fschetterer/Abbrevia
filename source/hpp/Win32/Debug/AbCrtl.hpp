@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'AbCrtl.pas' rev: 30.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'AbCrtl.pas' rev: 32.00 (Windows)
 
 #ifndef AbcrtlHPP
 #define AbcrtlHPP
@@ -22,8 +22,6 @@ namespace Abcrtl
 {
 //-- forward type declarations -----------------------------------------------
 //-- type declarations -------------------------------------------------------
-typedef unsigned UInt32;
-
 typedef NativeInt size_t;
 
 //-- var, const, procedure ---------------------------------------------------

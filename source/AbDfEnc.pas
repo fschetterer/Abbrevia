@@ -683,7 +683,7 @@ const
   StoredBlockSize = $FFFF;
 var
   Buffer    : PByte;
-  BytesRead : LongWord;
+  BytesRead : UInt32;
   ByteCount : Int64;
   BytesToGo : Int64;
   CurPos    : Int64;
@@ -808,7 +808,6 @@ begin
          'Deflate: aHelper.Options must enable some kind of archiving');
 
   {$IFDEF DefeatWarnings}
-  Result := 0;
   {$ENDIF}
 
   {prepare for the try..finally}

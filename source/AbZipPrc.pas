@@ -294,7 +294,6 @@ var
   SaveDir : string;
   AttrEx : TAbAttrExRec;
 begin
-  UncompressedStream := nil;
   GetDir(0, SaveDir);
   try {SaveDir}
     if (Sender.BaseDirectory <> '') then
@@ -311,7 +310,7 @@ begin
   end; {SaveDir}
   try {UncompressedStream}
     {$IFDEF POSIX}
-    Item.ExternalFileAttributes := LongWord(AttrEx.Mode) shl 16 + LongWord(AttrEx.Attr);
+    Item.ExternalFileAttributes := UInt32(AttrEx.Mode) shl 16 + UInt32(AttrEx.Attr);
     {$ELSE}
     Item.ExternalFileAttributes := AttrEx.Attr;
     {$ENDIF}

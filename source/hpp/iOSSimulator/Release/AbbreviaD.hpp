@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'AbbreviaD.dpk' rev: 30.00 (iOSSIM)
+// (DO NOT EDIT: machine generated header) 'AbbreviaD.dpk' rev: 32.00 (iOSSIM)
 
 #ifndef AbbreviadHPP
 #define AbbreviadHPP
@@ -63,6 +63,12 @@
 #include <AbZLTyp.hpp>
 #include <AbLZMAStream.hpp>
 #include <AbBytes.hpp>
+// SO_PFX: bpl
+// SO_SFX: 250
+// PRG_EXT: .a
+// BPI_DIR: C:\Users\Public\Documents\Embarcadero\Studio\19.0\Dcp\iOSSimulator
+// OBJ_DIR: C:\Users\Public\Documents\Embarcadero\Studio\19.0\Dcp\iOSSimulator
+// OBJ_EXT: .o
 
 //-- user supplied -----------------------------------------------------------
 

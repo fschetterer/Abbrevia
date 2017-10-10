@@ -103,6 +103,18 @@
   {$DEFINE NoBZip2}
 {$ENDIF}
 
+{$IFDEF IOS}
+  {$DEFINE NoBZip2}
+{$ENDIF}
+
+{$IFDEF LINUX}
+  {$DEFINE NoBZip2}
+{$ENDIF}
+
+{$IF DEFINED(BCB) AND DEFINED(MACOS)}
+  {$DEFINE NoBZip2}
+{$ENDIF}
+
 {====Zip defines=====================================================}
 
 {Activate the following define when you don't want Visual parts of

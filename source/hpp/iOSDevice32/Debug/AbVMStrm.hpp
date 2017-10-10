@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'AbVMStrm.pas' rev: 30.00 (iOS)
+// (DO NOT EDIT: machine generated header) 'AbVMStrm.pas' rev: 32.00 (iOS)
 
 #ifndef AbvmstrmHPP
 #define AbvmstrmHPP
@@ -89,7 +89,7 @@ public:
 	inline __int64 __fastcall  Seek _DEPRECATED_ATTRIBUTE0 (const __int64 Offset, System::Word Origin){ return System::Classes::TStream::Seek(Offset, Origin); }
 	
 protected:
-	inline void __fastcall  SetSize(int NewSize){ System::Classes::TStream::SetSize(NewSize); }
+	inline void __fastcall  SetSize _DEPRECATED_ATTRIBUTE0 (int NewSize){ System::Classes::TStream::SetSize(NewSize); }
 	
 };
 

@@ -1,8 +1,8 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2015 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'AbDfStrm.pas' rev: 30.00 (iOS)
+// (DO NOT EDIT: machine generated header) 'AbDfStrm.pas' rev: 32.00 (iOS)
 
 #ifndef AbdfstrmHPP
 #define AbdfstrmHPP
@@ -121,13 +121,13 @@ private:
 	Abdfbase::TAbLogger* FLog;
 	Abdfinw::TAbDfInputWindow* FSlideWin;
 	__int64 FStartOfs;
-	unsigned long FStoredSize;
+	unsigned FStoredSize;
 	System::Byte *FStream;
 	System::Byte *FStrmEnd;
 	bool FUseDeflate64;
 	
 protected:
-	unsigned long __fastcall lzsGetApproxSize(void);
+	unsigned __fastcall lzsGetApproxSize(void);
 	int __fastcall lzsGetStaticSize(void);
 	int __fastcall lzsGetStoredSize(void);
 	bool __fastcall lzsIsFull(void);
@@ -163,7 +163,7 @@ private:
 public:
 	__fastcall TAbDfCodeLenStream(Abdfbase::TAbLogger* aLog);
 	__fastcall virtual ~TAbDfCodeLenStream(void);
-	void __fastcall Build(int const *aCodeLens, const int aCodeLens_High, int aCount);
+	void __fastcall Build(const int *aCodeLens, const int aCodeLens_High, int aCount);
 	void __fastcall Encode(TAbDfOutBitStream* aBitStrm, Abdfhufd::TAbDfDecodeHuffmanTree* aTree);
 	__property PAbDfCodeLenBuckets Buckets = {read=FBuckets};
 };

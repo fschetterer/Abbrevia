@@ -176,9 +176,6 @@ type
 
   function AbCreateTempFile(const Dir : string) : string;
 
-  function AbGetTempDirectory : string;
-    {-Return the system temp directory}
-
   function AbGetTempFile(const Dir : string; CreateIt : Boolean) : string;
 
   function AbDrive(const ArchiveName : string) : Char;
@@ -336,8 +333,10 @@ uses
   AbConst,
   AbExcept;
 
+{$IFNDEF LINUX}
 {$IFDEF POSIX}
 function mktemp(template: MarshaledAString): MarshaledAString; cdecl; external libc name _PU + 'mktemp';
+{$ENDIF}
 {$ENDIF}
 
 {===platform independent routines for platform dependent stuff=======}
@@ -426,39 +425,44 @@ begin
   Result := AbGetTempFile(Dir, True);
 end;
 { -------------------------------------------------------------------------- }
-function AbGetTempDirectory : string;
-begin
-{$IFDEF MSWiNDOWS}
-  SetLength(Result, MAX_PATH);
-  SetLength(Result, GetTempPath(Length(Result),  PChar(Result)));
-{$ENDIF}
-{$IFDEF POSIX}
-  Result := '/tmp/';
-{$ENDIF}
-end;
-{ -------------------------------------------------------------------------- }
 function AbGetTempFile(const Dir : string; CreateIt : Boolean) : string;
 var
   TempPath : string;
 {$IFDEF MSWINDOWS}
   FileNameZ : array [0..259] of char;
 {$ENDIF}
+{$IFNDEF LINUX64}
 {$IFDEF POSIX}
   hFile: Integer;
   FileName: AbSysString;
   M: TMarshaller;
 {$ENDIF}
+{$ENDIF}
+{$IFDEF LINUX64}
+  function RandomName: string;
+  var
+    LRand: TGUID;
+  begin
+    LRand := TGUID.NewGuid;
+    Result := Format('File_%8x%4x%4x%16x_tmp', [LRand.D1, LRand.D2, LRand.D3, PInt64(@LRand.D4[0])^]);
+  end;
+{$ENDIF}
 begin
   if TDirectory.Exists(Dir) then
     TempPath := Dir
   else
-    TempPath := AbGetTempDirectory;
+    TempPath := TPath.GetTempPath;
 {$IFDEF MSWINDOWS}
   GetTempFileName(PChar(TempPath), 'VMS', Word(not CreateIt), FileNameZ);
   Result := string(FileNameZ);
 {$ENDIF}
+{$IFDEF LINUX64}
+  repeat
+    Result := TPath.Combine(TempPath, RandomName);
+  until (not FileExists(Result, False));
+{$ELSE}
 {$IFDEF POSIX}
-  FileName := TempPath + 'VMSXXXXXX';
+  FileName := TPath.Combine(TPath.GetTempPath, 'VMSXXXXXX');
   mktemp(M.AsAnsi(FileName).ToPointer);
   Result := FileName;
   if CreateIt then begin
@@ -467,6 +471,7 @@ begin
       FileClose(hFile);
   end;
 {$ENDIF}
+{$ENDIF LINUX}
 end;
 { -------------------------------------------------------------------------- }
 function AbDrive(const ArchiveName : string) : Char;
