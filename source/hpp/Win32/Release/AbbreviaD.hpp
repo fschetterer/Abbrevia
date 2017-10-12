@@ -1,5 +1,5 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2016 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
 // All rights reserved
 
 // (DO NOT EDIT: machine generated header) 'AbbreviaD.dpk' rev: 32.00 (Windows)
@@ -70,9 +70,9 @@
 #include <System.SysUtils.hpp>	// (rtl)
 #include <System.VarUtils.hpp>	// (rtl)
 #include <System.Variants.hpp>	// (rtl)
+#include <System.Math.hpp>	// (rtl)
 #include <System.Rtti.hpp>	// (rtl)
 #include <System.TypInfo.hpp>	// (rtl)
-#include <System.Math.hpp>	// (rtl)
 #include <System.Generics.Defaults.hpp>	// (rtl)
 #include <System.Classes.hpp>	// (rtl)
 #include <System.TimeSpan.hpp>	// (rtl)
@@ -83,8 +83,8 @@
 #include <Winapi.ShellAPI.hpp>	// (rtl)
 // SO_SFX: 250
 // PRG_EXT: .bpl
-// BPI_DIR: C:\Users\Public\Documents\Embarcadero\Studio\19.0\Dcp
-// OBJ_DIR: C:\Users\Public\Documents\Embarcadero\Studio\19.0\Dcp
+// BPI_DIR: C:\devtemp\components\BPL\Tokyo\Win32
+// OBJ_DIR: C:\devtemp\components\BPL\Tokyo\Win32
 // OBJ_EXT: .obj
 
 //-- user supplied -----------------------------------------------------------
