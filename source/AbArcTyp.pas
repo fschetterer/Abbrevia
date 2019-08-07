@@ -1534,8 +1534,14 @@ end;
 { -------------------------------------------------------------------------- }
 function TAbArchive.FindFile(const aFileName : string): Integer;
   {find the index of the specified file}
+{$REGION 'History'}
+//  07-Aug-2019 - Was Unable to Find files because it requires a Linux PathDelim
+{$ENDREGION}
+var LFileName : string;
 begin
-  Result := FItemList.Find(aFileName);
+  LFileName := AFileName;
+  AbFixName(LFileName); // Bug
+  Result := FItemList.Find(LFileName);
 end;
 { -------------------------------------------------------------------------- }
 function TAbArchive.FindItem(aItem : TAbArchiveItem): Integer;
